@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser (
         description='simple base format encoder')
 
 parser.add_argument('string')
-parser.add_argument('-f', '--format', required=True, type=int, choices=[64, 32, 16, 85, 58, 62])
+parser.add_argument('-f', '--format', required=True, type=int, choices=[64, 32, 16, 85, 58, 62, 2])
 
 args = parser.parse_args()
 
@@ -25,6 +25,8 @@ match args.format:
         out = base58.b58encode(args.string.encode('utf-8')).decode('utf-8')
     case 62:
         out = base62.encodebytes(args.string.encode('utf-8'))
+    case 2:
+        out = ''.join(format(byte, '08b') for byte in args.string.encode('utf-8'))
     case _:
         out = "later"
 
