@@ -15,6 +15,8 @@ def get_file_bytes(args):
                 yield chunk
     except FileNotFoundError:
         print("file not found")
+    except IsADirectoryError:
+        print("file is a directory")
 
 def encode_file(args, stream):
     for chunk in stream:
