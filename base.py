@@ -26,7 +26,7 @@ def encode_file(args, stream):
             case 58:
                 print(base58.b58encode(chunk).decode('utf-8'), end="")
             case 62:
-                print(base62.encodebytes(chunk).decode('utf-8'), end="")
+                print(base62.encodebytes(chunk), end="")
             case 64:
                 print(base64.b64encode(chunk).decode('utf-8'), end="")
             case 85:
@@ -41,7 +41,7 @@ def encode(args, byte_data):
         case 58:
             print(base58.b58encode(byte_data).decode('utf-8'), end="")
         case 62:
-            print(base62.encodebytes(byte_data).decode('utf-8'), end="")
+            print(base62.encodebytes(byte_data), end="")
         case 64:
             print(base64.b64encode(byte_data).decode('utf-8'), end="")
         case 85:
