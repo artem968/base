@@ -1,4 +1,13 @@
 import re
+import argparse
+
+parser = argparse.ArgumentParser (
+        prog='identify',
+        description='simple base format identifier')
+
+parser.add_argument('string')
+
+args = parser.parse_args()
 
 def identify(s):
     # Dictionary requires "Key": "Value" pairs
@@ -16,9 +25,8 @@ def identify(s):
     matches = [base for base, reg in patterns.items() if re.match(reg, s)]
     return matches
 
-# Your input string
-string = "Xk~0{Zv"
+string = "ONSWG33OMQQHO33SMQ======"
 
 # In Python, use 'print()', not 'printf()'
-print(f"Input: {string}")
-print(f"Possible Bases: {identify(string)}")
+print(f"Input: {args.string}")
+print(f"Possible Bases: {identify(args.string)}")
